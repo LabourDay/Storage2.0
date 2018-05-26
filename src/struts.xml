@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<!-- <constant name="struts.enable.DynamicMethodInvocation" value="false" 
+		/> <constant name="struts.devMode" value="true" /> <package name="default" 
+		namespace="/" extends="struts-default"> <default-action-ref name="index" 
+		/> <global-results> <result name="error">/error.jsp</result> </global-results> 
+		<global-exception-mappings> <exception-mapping exception="java.lang.Exception" 
+		result="error"/> </global-exception-mappings> <action name="index"> <result 
+		type="redirectAction"> <param name="actionName">HelloWorld</param> <param 
+		name="namespace">/example</param> </result> </action> </package> <include 
+		file="example.xml"/> -->
+
+	<!-- Add packages here -->
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	<constant name="struts.i18n.encoding" value="utf-8" />
+	<!-- <constant name="struts.ognl.allowStaticMethodAccess" value="true"></constant> -->
+
+	<package name="default" namespace="/" extends="struts-default">
+		<action name="workerregister" class="com.storage.action.Register">
+			<result name="registerSuccess">
+				/success.jsp
+			</result>
+
+			<result name="registerFail">
+				/fail.jsp
+			</result>
+
+		</action>
+
+		<action name="login" class="com.storage.action.Login">
+			<result name="loginSuccess">
+				/index.jsp
+			</result>
+
+			<result name="loginErr">
+				/login.jsp
+			</result>
+
+			<result name="logout">
+				/login.jsp
+			</result>
+			<result name="updatePasswdJsp">/index.jsp</result>
+			<result name="updatePasswdSc">/index.jsp</result>
+			<result name="updatePasswdFi">/index.jsp</result>
+		</action>
+
+		<!-- <action name="navigate" class="com.storage.action.NavigateAction"> 
+			<result name="storage">/index.jsp</result> <result name="goods">/index.jsp</result> 
+			<result name="oi">/index.jsp</result> </action> -->
+
+		<action name="goods" class="com.storage.action.GoodsAction">
+			<result name="goodsMessage">/index.jsp</result>
+			<result name="updateMessage">/index.jsp</result>
+			<result name="goodsSearch">/index.jsp</result>
+			<result name="insertJsp">/index.jsp</result>
+			<result name="goodsInsert">/index.jsp</result>
+			<result name="goodsPage">/index.jsp</result>
+			<result name="goodsFindId">/index.jsp</result>
+			<result name="goodsUpdate">/index.jsp</result>
+			<result name="goodsDelete">/index.jsp</result>
+
+		</action>
+
+		<action name="StorAction" class="com.storage.action.StorAction">
+			<result name="success">/index.jsp</result>
+		</action>
+
+		<action name="storageAdd" class="com.storage.action.StoAddAction">
+			<result name="success" type="redirectAction">storageSelect.action</result>
+			<result name="input">/index.jsp</result>
+		</action>
+
+		<action name="storageSelect" class="com.storage.action.StoSelectAction">
+			<result name="success">/index.jsp</result>
+		</action>
+
+		<action name="storageSelectId" class="com.storage.action.StoSelectIdAction">
+			<result name="success">/index.jsp</result>
+		</action>
+
+		<action name="storageUpdata" class="com.storage.action.StoUpdataAction">
+			<result name="success" type="redirectAction">storageSelect.action</result>
+			<result name="input">/index.jsp</result>
+		</action>
+
+		<action name="storageDelete" class="com.storage.action.StoDeleteAction">
+			<result name="success" type="redirectAction">storageSelect.action</result>
+			<result name="input">/index.jsp</result>
+		</action>
+
+		<action name="storageTiao" class="com.storage.action.StoTiaoAction">
+			<result name="success">/index.jsp</result>
+		</action>
+		
+		<action name="worker" class="com.storage.action.WorkerAction">
+			<result name="success">/index.jsp</result>
+			<result name="find">/index.jsp</result>
+			<result name="workerUpdate">/index.jsp</result>
+			<result name="workerDel">/index.jsp</result>
+			<result name="insertWkJsp">/index.jsp</result>
+			<result name="workerInsert">/index.jsp</result>
+		</action>
+		
+		<action name="yuangong" class="com.storage.action.yuangongAction">
+    		<result name="yuangongMessage">/index.jsp</result>
+    		<result name="updateMessage">/index.jsp</result>
+    		<result name="yuangongSearch">/index.jsp</result>
+    		<result name="insertJsp">/index.jsp</result>
+    		<result name="yuangongInsert">/index.jsp</result>
+    		<result name="yuangongPage">/index.jsp</result>
+    		<result name="yuangongFindId">/index.jsp</result>
+    		<result name="yuangongUpdate">/index.jsp</result>
+    		<result name="yuangongDelete">/index.jsp</result>
+    		
+    	</action>
+		
+<!-- 		<action name="telIOAction" class="com.storage.action.TelStorAction">
+		<result name="success">/index.jsp</result>
+		</action> -->
+	</package>
+
+	<package name="json" extends="json-default">
+		<action name="TelStoAction" class="com.storage.action.TelStoAction">
+			<result type="json"></result>
+		</action>
+		
+		<action name="telIOAction" class="com.storage.action.TelStorAction">
+			<result type="json"></result>
+		</action>
+	</package>
+	
+
+
+	<!-- <package name="jsonAction" namespace="/" extends="json-default"> <action 
+		name="jsonAction" class="com.storage.action.JsonAction"> <result name="json" 
+		type="json" /> </action> </package> -->
+
+	<!-- <package name="jsonAction" namespace="/json" extends="json-default"> 
+		<action name="jsonAction" class="com.storage.action.LoginJsonAction"> <result 
+		name="json" type="json" /> </action> </package> -->
+
+	<!-- <package name="jsonExample" namespace="/json" extends="json-default"> 
+		<action name="jsonAction" class="com.storage.action.JsonAction"> <result 
+		name="json" type="json"></result> </action> </package> -->
+
+
+	<!-- <package name="tel"> <action name="telGoodsMsg" class="com.tel_storage.action.TelGoodsAction"></action> 
+		</package> -->
+
+
+</struts>
